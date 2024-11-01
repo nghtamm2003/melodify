@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:melodify/core/theme/app_theme.dart';
-import 'package:melodify/features/splash/views/pages/splash.dart';
+import 'package:melodify/features/get_started/views/pages/get_started.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Melodify',
       theme: AppTheme.darkTheme,
-      home: const SplashPage(),
-      debugShowCheckedModeBanner: false,
+      home: const GetStartedPage(),
+      debugShowCheckedModeBanner: false, 
     );
   }
 }
