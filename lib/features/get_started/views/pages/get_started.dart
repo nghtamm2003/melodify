@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:melodify/core/theme/color_palette.dart';
+import 'package:melodify/features/auth/views/pages/authentication.dart';
+import 'package:melodify/features/get_started/bloc/theme_cubit.dart';
 
 class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
@@ -61,11 +64,12 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
+                Text(
                   'Which one do you prefer?',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w300,
+                    color: Colors.white.withOpacity(0.9),
                   ),
                 ),
                 const SizedBox(height: 40),
@@ -75,27 +79,36 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipOval(
-                          child: Material(
-                            color: Colors.grey.withOpacity(0.5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: const SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Icon(
-                                  Icons.dark_mode_outlined,
-                                  color: Colors.white,
+                        BlocBuilder<ThemeCubit, ThemeMode>(
+                          builder: (context, theme) => ClipOval(
+                            child: Material(
+                              color: theme == ThemeMode.dark
+                                  ? Colors.grey.withOpacity(0.5)
+                                  : Colors.grey.withOpacity(0.1),
+                              child: InkWell(
+                                onTap: () => context
+                                    .read<ThemeCubit>()
+                                    .toggleTheme(ThemeMode.dark),
+                                child: SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Icon(
+                                    theme == ThemeMode.dark
+                                        ? Icons.dark_mode
+                                        : Icons.dark_mode_outlined,
+                                    color: Colors.white.withOpacity(0.9),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
-                        const Text(
+                        Text(
                           'Dark Mode',
                           style: TextStyle(
                             fontSize: 14,
+                            color: Colors.white.withOpacity(0.9),
                           ),
                         ),
                       ],
@@ -103,27 +116,36 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ClipOval(
-                          child: Material(
-                            color: Colors.grey.withOpacity(0.5),
-                            child: InkWell(
-                              onTap: () {},
-                              child: const SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: Icon(
-                                  Icons.light_mode_outlined,
-                                  color: Colors.white,
+                        BlocBuilder<ThemeCubit, ThemeMode>(
+                          builder: (context, theme) => ClipOval(
+                            child: Material(
+                              color: theme == ThemeMode.light
+                                  ? Colors.grey.withOpacity(0.5)
+                                  : Colors.grey.withOpacity(0.1),
+                              child: InkWell(
+                                onTap: () => context
+                                    .read<ThemeCubit>()
+                                    .toggleTheme(ThemeMode.light),
+                                child: SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: Icon(
+                                    theme == ThemeMode.light
+                                        ? Icons.light_mode
+                                        : Icons.light_mode_outlined,
+                                    color: Colors.white.withOpacity(0.9),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 10),
-                        const Text(
+                        Text(
                           'Light Mode',
                           style: TextStyle(
                             fontSize: 14,
+                            color: Colors.white.withOpacity(0.9),
                           ),
                         ),
                       ],
@@ -137,7 +159,15 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     vertical: 0,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const Authentication(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Get Started',
                       style: TextStyle(
