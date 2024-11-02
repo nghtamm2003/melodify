@@ -12,121 +12,146 @@ class _GetStartedPageState extends State<GetStartedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 60,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/spotify_full_logo.png',
-              height: 70,
-            ),
-            const Spacer(),
-            RichText(
-              textAlign: TextAlign.center,
-              text: const TextSpan(
-                text: 'Melodify - a ',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Spotify',
-                    style: TextStyle(
-                      color: ColorPalette.primary,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' redesigned one',
-                  ),
-                ],
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: ColorFiltered(
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.8),
+                BlendMode.darken,
+              ),
+              child: Image.asset(
+                'assets/images/get_started_background.png',
+                fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 10),
-            const Text(
-              'Choose your theme:',
-              style: TextStyle(
-                fontSize: 16,
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
+              vertical: 70,
             ),
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey,
-                        ),
-                        child: const Icon(
-                          Icons.dark_mode,
-                          color: Colors.white,
-                        ),
-                      ),
+                Image.asset(
+                  'assets/images/spotify_full_logo.png',
+                  height: 60,
+                ),
+                const Spacer(),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: const TextSpan(
+                    text: 'Melodify - a ',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Dark Mode',
-                      style: TextStyle(
-                        fontSize: 14,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Spotify',
+                        style: TextStyle(
+                          color: ColorPalette.primary,
+                        ),
                       ),
+                      TextSpan(
+                        text: ' redesigned one',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Which one do you prefer?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                const SizedBox(height: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipOval(
+                          child: Material(
+                            color: Colors.grey.withOpacity(0.5),
+                            child: InkWell(
+                              onTap: () {},
+                              child: const SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: Icon(
+                                  Icons.dark_mode_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Dark Mode',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipOval(
+                          child: Material(
+                            color: Colors.grey.withOpacity(0.5),
+                            child: InkWell(
+                              onTap: () {},
+                              child: const SizedBox(
+                                width: 50,
+                                height: 50,
+                                child: Icon(
+                                  Icons.light_mode_outlined,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Light Mode',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey,
-                        ),
-                        child: const Icon(
-                          Icons.light_mode,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Light Mode',
+                const SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 0,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Get Started',
                       style: TextStyle(
-                        fontSize: 14,
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text(
-                'Get Started',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
