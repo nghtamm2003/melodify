@@ -50,7 +50,7 @@ class SignInPage extends StatelessWidget {
                   decoration: InputDecoration(
                     labelText: 'Password',
                     hintText: 'Enter your password',
-                    prefixIcon: Icon(Icons.key_rounded),
+                    prefixIcon: const Icon(Icons.key_rounded),
                     suffixIcon: GestureDetector(
                       onTap: () =>
                           context.read<PasswordInputCubit>().toggleVisibility(),
@@ -91,7 +91,7 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(width: 5),
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (BuildContext context) => SignUpPage(),
                       ),
