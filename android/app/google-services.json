@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "70285613854",
+    "project_id": "melodify-v1",
+    "storage_bucket": "melodify-v1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70285613854:android:b3088a5bd0454c0848870f",
+        "android_client_info": {
+          "package_name": "com.example.melodify"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtStCfUkStGJd-vLHifNdyKuEMmWt2puY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
