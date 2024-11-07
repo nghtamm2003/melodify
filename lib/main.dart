@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:melodify/core/theme/app_theme.dart';
-import 'package:melodify/features/get_started/bloc/theme_cubit.dart';
+import 'package:melodify/features/auth/views/bloc/password_input_cubit.dart';
+import 'package:melodify/features/get_started/views/bloc/theme_cubit.dart';
 import 'package:melodify/features/get_started/views/pages/get_started.dart';
 import 'package:melodify/firebase_options.dart';
 import 'package:path_provider/path_provider.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (_) => ThemeCubit(),
+        ),
+        BlocProvider(
+          create: (_) => PasswordInputCubit(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(

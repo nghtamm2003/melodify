@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:melodify/core/widgets/app_bar.dart';
+import 'package:melodify/features/auth/views/bloc/password_input_cubit.dart';
 import 'package:melodify/features/auth/views/pages/sign_in.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -50,13 +52,24 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter a password',
-                prefixIcon: Icon(Icons.key_rounded),
-              ),
+            BlocBuilder<PasswordInputCubit, bool>(
+              builder: (context, isVisible) {
+                return TextField(
+                  controller: _passwordController,
+                  obscureText: !isVisible,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    prefixIcon: Icon(Icons.key_rounded),
+                    suffixIcon: GestureDetector(
+                      onTap: () =>
+                          context.read<PasswordInputCubit>().toggleVisibility(),
+                      child: Icon(
+                          isVisible ? Icons.visibility : Icons.visibility_off),
+                    ),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: 40),
             ElevatedButton(

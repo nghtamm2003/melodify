@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:melodify/core/helpers/current_theme.dart';
 import 'package:melodify/core/theme/color_palette.dart';
 import 'package:melodify/features/auth/views/pages/authentication.dart';
-import 'package:melodify/features/get_started/bloc/theme_cubit.dart';
+import 'package:melodify/features/get_started/views/bloc/theme_cubit.dart';
 
 class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
